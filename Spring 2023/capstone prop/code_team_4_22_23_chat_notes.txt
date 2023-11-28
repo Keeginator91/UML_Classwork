@@ -1,0 +1,40 @@
+Code team chat 4/22/23 notes:
+- structure for each battery
+    - Voltage
+    - 
+- have floor value for low
+    - raise a flag if a battery is below said floor
+- have a ceiling value for *nearly* full/good enough
+- for switching array configurations
+	- turn all FETs off then enter the new config
+	- will need a small delay to make sure everything is delayed before switch
+- Run battery discharge test so we can see the differences between OC and loaded terminal voltages.
+  If we see a trend, we could plan around it in the system.
+- If there is no voltage trend, we know how long it takes to discharge a battery from full, we could use this to estimate when a battery would be low.
+- Diodes to prevent back charging when arrays are in parralell with eachother
+- Add "black box" for wall charging, control the outputs with two fets on wall charger and two more on the solar charger.
+  when wall charging, disable the solar array and enable the wall charger. Then charge each battery indevidually
+
+
+Changes for charging diagram
+	- Add the flags for floor and ceiling
+	- poll battery voltages
+		- when brake enaged, because the motors are disabled anyways, kill power, poll voltages. 
+			- can publish the voltages to a structure or pass to dedicated variables (structure might be neeter)
+		1) disconnect everything and measure oc
+		2) reference oc vs loaded voltage trend for estimate
+	- include FET configuration table 
+	- include sleep state for overnight battery conservation
+		- if the key truned or button pressed, change state
+	
+
+Accelerator array (matt)
+	- add details
+
+single array (Keegan)
+	- add battery polling
+	- wall charger
+	- add delay between switching
+
+Polling chart (Tom)
+	- made from scratch
